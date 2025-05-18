@@ -389,7 +389,7 @@ export default function Header() {
                           className={isMobile ? styles.uploadBtnContainer : styles.uploadBtn}
                           onClick={() => openModal({ type: "LOGIN" })}
                         >
-                          <Button size="l" type="filled-primary">
+                          <Button size="m" type="filled-primary" width="200px">
                             로그인
                           </Button>
                         </div>
@@ -416,7 +416,11 @@ export default function Header() {
                       </>
                     ) : (
                       <div className={styles.mobileProfile}>
-                        <div className={styles.profileSubmenu}>
+                        <div
+                          className={`${styles.profileSubmenu} ${
+                            isSubMenuOpen ? styles.profileSubmenuOpen : ""
+                          }`}
+                        >
                           <Link href={`/${myData?.url}`} className={styles.mobileMyInfo}>
                             <Image
                               src={myData?.image || "/image/default.svg"}
@@ -454,12 +458,13 @@ export default function Header() {
                             </button>
                           </div>
                         )}
-                        <div className={styles.uploadBtn}>
+                        <div className={styles.uploadFeedBtn}>
                           <Link href="/write">
                             <Button
-                              size="l"
+                              size="m"
+                              width="200px"
                               type="filled-primary"
-                              leftIcon={<IconComponent name="menuUpload" size={16} />}
+                              leftIcon={<IconComponent name="menuUpload" size={16} isBtn />}
                             >
                               그림 업로드
                             </Button>
@@ -518,23 +523,29 @@ export default function Header() {
                         </div>
                       </div>
                     )}
-                    <div className={styles.subLink}>
-                      <a
-                        href="https://nostalgic-patch-498.notion.site/1930ac6bf29881b9aa19ff623c69b8e6?pvs=74"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        이용약관
-                      </a>
-                      <a
-                        href="https://nostalgic-patch-498.notion.site/1930ac6bf29881e9a3e4c405e7f49f2b?pvs=73"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        개인정보취급방침
-                      </a>
+                    <div className={styles.infoWrapper}>
+                      <div className={styles.item}>
+                        <div className={styles.subLink}>
+                          <a
+                            href="https://nostalgic-patch-498.notion.site/1930ac6bf29881b9aa19ff623c69b8e6?pvs=74"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            이용약관
+                          </a>
+                          <a
+                            href="https://nostalgic-patch-498.notion.site/1930ac6bf29881e9a3e4c405e7f49f2b?pvs=73"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            개인정보취급방침
+                          </a>
+                        </div>
+                      </div>
+                      <div className={styles.item}>
+                        <p className={styles.copy}>© Grimity. All rights reserved.</p>
+                      </div>
                     </div>
-                    <p className={styles.copy}>© Grimity. All rights reserved.</p>
                   </div>
                 </div>
               </div>

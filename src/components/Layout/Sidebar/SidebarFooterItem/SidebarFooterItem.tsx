@@ -1,9 +1,9 @@
-import { useState } from "react";
 import styles from "./SidebarFooterItem.module.scss";
 import IconComponent from "@/components/Asset/Icon";
 import { ICONS } from "@/constants/asset";
+import { useDeviceStore } from "@/states/deviceStore";
 
-type FooterIconName = "noti" | "ask";
+type FooterIconName = "noti" | "ask" | "notiM" | "askM";
 
 interface SidebarFooterItemProps {
   icon: FooterIconName;
@@ -20,7 +20,17 @@ const SidebarFooterItem = ({
   isHaveDropdown,
   isDropdownOpen,
 }: SidebarFooterItemProps) => {
-  if (!ICONS[icon as keyof typeof ICONS]) {
+  const isMobile = useDeviceStore((state) => state.isMobile);
+
+  const resolvedIcon = isMobile
+    ? icon === "noti"
+      ? "notiM"
+      : icon === "ask"
+      ? "askM"
+      : icon
+    : icon;
+
+  if (!ICONS[resolvedIcon as keyof typeof ICONS]) {
     return null;
   }
 
@@ -28,7 +38,7 @@ const SidebarFooterItem = ({
     <div className={styles.sidebarItem} onClick={onClickItem}>
       <div className={styles.wrapper}>
         <div className={styles.icon}>
-          <IconComponent name={icon} size={15} />
+          <IconComponent name={resolvedIcon} size={15} />
         </div>
         <span className={styles.label}>{label}</span>
         {isHaveDropdown && (
