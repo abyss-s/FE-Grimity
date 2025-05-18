@@ -10,6 +10,7 @@
   @include Body1;
   color: $gray60;
   cursor: pointer;
+  width: fit-content;
 
   @include Size("tablet") {
     flex-direction: column;
@@ -20,6 +21,11 @@
     height: 98px;
     padding: 7px 8px;
     white-space: pre-wrap;
+  }
+
+  @include Size("mobile") {
+    height: 20px;
+    padding: 0;
   }
 
   .wrapper {
@@ -34,8 +40,6 @@
     }
 
     .icon {
-      // margin-bottom: 3px;
-
       @include Size("tablet") {
         margin-top: 0;
       }

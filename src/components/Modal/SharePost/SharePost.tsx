@@ -7,7 +7,7 @@ import { DEFAULT_THUMBNAIL } from "@/constants/imageUrl";
 import { ShareBtnProps } from "@/components/Board/Detail/ShareBtn/ShareBtn.types";
 import IconComponent from "@/components/Asset/Icon";
 
-export default function SharePost({ postId, title }: ShareBtnProps) {
+export default function SharePost({ postId, title, thumbnail }: ShareBtnProps) {
   const { showToast } = useToast();
   const closeModal = useModalStore((state) => state.closeModal);
   const url = `${serviceUrl}/posts/${postId}`;
@@ -38,7 +38,7 @@ export default function SharePost({ postId, title }: ShareBtnProps) {
       content: {
         title: "그림 커뮤니티 그리미티",
         description: title,
-        imageUrl: DEFAULT_THUMBNAIL,
+        imageUrl: thumbnail ?? DEFAULT_THUMBNAIL,
         link: { mobileWebUrl: url, webUrl: url },
       },
     });

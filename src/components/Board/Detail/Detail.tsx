@@ -209,7 +209,7 @@ export default function PostDetail({ id }: PostDetailProps) {
                       />
                     </div>
                   ))}
-                <ShareBtn postId={id} title={posts.title} />
+                <ShareBtn postId={id} title={posts.title} thumbnail={posts.thumbnail} />
               </div>
             )}
           </section>

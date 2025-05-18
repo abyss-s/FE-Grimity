@@ -50,12 +50,13 @@ const Sidebar = () => {
 
   const isItemActive = (route: string) => {
     const currentPath = router.pathname;
-    
+
     if (route === "/" && currentPath === "/") return true;
     if (route === "popular" && currentPath === "/popular") return true;
-    if (route === "board" && (currentPath === "/board" || currentPath.startsWith("/posts/"))) return true;
+    if (route === "board" && (currentPath === "/board" || currentPath.startsWith("/posts/")))
+      return true;
     if (route === "following" && currentPath === "/following") return true;
-    
+
     return false;
   };
 

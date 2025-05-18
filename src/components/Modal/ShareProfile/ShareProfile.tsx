@@ -38,7 +38,7 @@ export default function ShareProfile({ id, name, image }: ShareProfileProps) {
       content: {
         title: "그림 커뮤니티 그리미티",
         description: name,
-        imageUrl: DEFAULT_THUMBNAIL,
+        imageUrl: image || DEFAULT_THUMBNAIL,
         link: { mobileWebUrl: url, webUrl: url },
       },
     });
